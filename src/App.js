@@ -1,5 +1,4 @@
 import './App.css';
-import TodoForm from './components/TodoForm';
 import TodoWrapper from './components/TodoWrapper';
 
 function App() {
@@ -13,13 +12,7 @@ function App() {
       <div className='tdList-container'>
         <section className='tdList-todo'>
 
-          <h2>
-            To-Do Tasks
-          </h2>
-
-          <TodoWrapper>
-            <TodoForm />
-          </TodoWrapper>
+          <TodoWrapper />
         </section>
 
         <section className='tdList-completed'>

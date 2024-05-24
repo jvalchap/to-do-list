@@ -17,7 +17,7 @@ export default function TodoWrapper() {
     }
 
     const editTodo = id => {
-        setTodos(todos.map(todo => todo.id === id ? { ...todo, isEditing: !todo.isEditing} : todo))
+        setTodos(todos.map(todo => todo.id === id ? { ...todo, isEditing: !todo.isEditing } : todo))
     }
 
     const deleteTask = id => {
@@ -25,7 +25,7 @@ export default function TodoWrapper() {
     }
 
     const editTask = (task, id) => {
-        setTodos(todos.map(todo => todo.id === id ? {...todo, task, isEditing: !todo.isEditing} : todo))
+        setTodos(todos.map(todo => todo.id === id ? { ...todo, task, isEditing: !todo.isEditing } : todo))
     }
 
     return (
@@ -33,7 +33,10 @@ export default function TodoWrapper() {
             <TodoForm addTodo={addTodo} />
             {todos.map((todo, index) => (
                 todo.isEditing ? (
-                    <EditTodoForm editTodo={editTask} task={todo.id}/>
+                    <EditTodoForm
+                        editTodo={editTask}
+                        task={todo}
+                    />
                 ) : (
                     <Todo
                         task={todo}

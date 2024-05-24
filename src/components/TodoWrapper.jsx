@@ -9,7 +9,7 @@ export default function TodoWrapper() {
     const [todos, setTodos] = useState([])
 
     const addTodo = todo => {
-        setTodos([...todos, { id: uuidv4(), task: todo, isCompleted: false, isEditing: false }])
+        setTodos([...todos, { id: uuidv4(), task: todo, completed: false, isEditing: false }])
     }
 
     const toggleComplete = id => {
@@ -17,11 +17,15 @@ export default function TodoWrapper() {
     }
 
     const editTodo = id => {
-        setTodos(todos.map(todo => todo.id === id ? { ...todo, isEditing: !todo.id} : todo))
+        setTodos(todos.map(todo => todo.id === id ? { ...todo, isEditing: !todo.isEditing} : todo))
     }
 
     const deleteTask = id => {
         setTodos(todos.filter(todo => todo.id !== id))
+    }
+
+    const editTask = (task, id) => {
+        setTodos(todos.map(todo => todo.id === id ? {...todo, task, isEditing: !todo.isEditing} : todo))
     }
 
     return (
@@ -29,7 +33,7 @@ export default function TodoWrapper() {
             <TodoForm addTodo={addTodo} />
             {todos.map((todo, index) => (
                 todo.isEditing ? (
-                    <EditTodoForm />
+                    <EditTodoForm editTodo={editTask} task={todo.id}/>
                 ) : (
                     <Todo
                         task={todo}

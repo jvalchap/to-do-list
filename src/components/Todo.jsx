@@ -9,7 +9,9 @@ export default function Todo({ task, toggleComplete, editTodo, deleteTask }) {
             <div>
                 <p className={`${task.completed ? 'completed' : ''}`}
                     onClick={() => toggleComplete(task.id)}
-                >{task.task}</p>
+                >
+                    {task.task}
+                </p>
 
                 <CreateIcon
                     onClick={() => editTodo(task.id)} />
